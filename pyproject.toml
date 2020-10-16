@@ -1,0 +1,11 @@
+[build-system]
+requires = [
+    "setuptools >= 43.0",
+    "wheel",
+]
+build-backend = "setuptools.build_meta"
+
+[tool.black]
+# Black is a Python code formatter
+# https://black.readthedocs.io/en/stable/
+line-length = 100

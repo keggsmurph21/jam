@@ -1,0 +1,29 @@
+#!/bin/bash
+#
+# Build a pex (executable bundled venv).
+
+#set -euo pipefail
+
+ROOT="$(git rev-parse --show-toplevel)"
+
+source "$ROOT/scripts/setup-env"
+
+# make sure tests are passing
+tox
+
+# build wheel & sdist
+python -m pep517.build .
+
+# build executable bundle
+pex \
+    . \
+    -v \
+    -c jam \
+    -r "$ROOT/requirements.txt" \
+    --disable-cache \
+    --output-file "$ROOT/dist/jam.pex"
+
+# just for fun
+deactivate
+echo '{"hello": "world"}' \
+    | ./dist/jam.pex -f json -t yaml

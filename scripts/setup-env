@@ -1,0 +1,14 @@
+#!/bin/bash
+#
+# TODO: Doc
+
+ROOT="$(git rev-parse --show-toplevel)"
+
+if [ ! -d "$ROOT/venv" ]; then
+    echo "Creating virtual environment at $ROOT/venv ..." >&2
+    python3.6 -m venv "$ROOT/venv"
+fi
+
+source "$ROOT/venv/bin/activate"
+
+pip install -e .[dev]

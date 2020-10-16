@@ -1,0 +1,17 @@
+# Virtual environment
+venv
+
+# Runtime caches
+__pycache__
+*.pyc
+
+# Testing caches
+.tox
+.pytest_cache
+.mypy_cache
+
+# Distribution artifacts
+dist
+build
+*.egg-info
+.eggs
